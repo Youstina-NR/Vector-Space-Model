@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vector Space Model</title>
+    <link rel="stylesheet" media="screen" href="static/bootstrap.min.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function() {
+          $('a#Rbutton').bind('click', function() {
+            $.getJSON('/random',
+                function(data) {
+              //do nothing
+            });
+            return false;
+          });
+        });
+</script>
+</head>
+<body class="popover-body">
+    <!--<form >
+        <input type="submit" class="btn btn-success" value="Generate files" id = "Rbutton" >
+    </form>-->
+   <form>
+    <a href="#" id="Rbutton"><button class="btn btn-success">Generate Files</button></a>
+    </form>
+
+    <form action="/" method="POST">
+        <div class="form-group">
+		    <label class="form-control-plaintext" >Query : </label>
+            <input type="text" class="form-control" name="query"  required>
+            <span class="text-danger" >{{ error }}</span>
+            
+		    
+        </div>
+		<input type="submit" class="btn btn-success" >
+    </form>
+    <br/><br/>
+    <div class="alert-success">
+    <h3 >Query : </h3>    
+    <p class="bd-content">{{query}}</p>
+    <h3 >Files : </h3>  
+    <u>
+    {% for x in r %}
+        <li>{{x[0]}} : {{x[1]}}</li>
+    {% endfor %}
+    </u>
+    </div>
+</body>
+</html>
